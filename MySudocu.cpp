@@ -1,7 +1,7 @@
-// MySudocu.cpp: определяет точку входа для консольного приложения.
+// MySudocu.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
-#include "stdafx.h"
+
 #include "fstream"
 #include"ctime"
 #include "string"
@@ -11,7 +11,7 @@ using namespace std;
 const int n = 9;
 char table[n][n];
 
-void dsdjl(char(*tab)[n][n]) //функция для вывода таблицы
+void dsdjl(char(*tab)[n][n]) //ГґГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГўГ»ГўГ®Г¤Г  ГІГ ГЎГ«ГЁГ¶Г»
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -24,7 +24,7 @@ void dsdjl(char(*tab)[n][n]) //функция для вывода таблицы
 	cout << endl;
 }
 
-void transpose() //транспонирование матрицы
+void transpose() //ГІГ°Г Г­Г±ГЇГ®Г­ГЁГ°Г®ГўГ Г­ГЁГҐ Г¬Г ГІГ°ГЁГ¶Г»
 {
 	int i, j;
 	for (i = 0; i < n; i++)
@@ -35,10 +35,10 @@ void transpose() //транспонирование матрицы
 		}
 	}
 }
-void permutation_str() //поменять две строки в пределах одной тройки
+void permutation_str() //ГЇГ®Г¬ГҐГ­ГїГІГј Г¤ГўГҐ Г±ГІГ°Г®ГЄГЁ Гў ГЇГ°ГҐГ¤ГҐГ«Г Гµ Г®Г¤Г­Г®Г© ГІГ°Г®Г©ГЄГЁ
 {
-	int swap_str, j, i = rand() % 9; //рандомим строку, которую будем менять
-	if ((i == 0) || (i == 3) || (i == 6)) swap_str = rand() % 2 + 1; //рандомим строку, с которой будем менять, в пределах этой тройки
+	int swap_str, j, i = rand() % 9; //Г°Г Г­Г¤Г®Г¬ГЁГ¬ Г±ГІГ°Г®ГЄГі, ГЄГ®ГІГ®Г°ГіГѕ ГЎГіГ¤ГҐГ¬ Г¬ГҐГ­ГїГІГј
+	if ((i == 0) || (i == 3) || (i == 6)) swap_str = rand() % 2 + 1; //Г°Г Г­Г¤Г®Г¬ГЁГ¬ Г±ГІГ°Г®ГЄГі, Г± ГЄГ®ГІГ®Г°Г®Г© ГЎГіГ¤ГҐГ¬ Г¬ГҐГ­ГїГІГј, Гў ГЇГ°ГҐГ¤ГҐГ«Г Гµ ГЅГІГ®Г© ГІГ°Г®Г©ГЄГЁ
 	if ((i == 1) || (i == 4) || (i == 7)) swap_str = 1;
 	if ((i == 2) || (i == 5) || (i == 8)) swap_str = -(rand() % 2 + 1);
 	for (j = 0; j < n; j++)
@@ -46,28 +46,28 @@ void permutation_str() //поменять две строки в пределах одной тройки
 		swap(table[i][j], table[i + swap_str][j]);
 	}
 }
-void permutation_3_str() //поменять две тройки строк
+void permutation_3_str() //ГЇГ®Г¬ГҐГ­ГїГІГј Г¤ГўГҐ ГІГ°Г®Г©ГЄГЁ Г±ГІГ°Г®ГЄ
 {
 	int swap_str, j, i;
-	do // рандомим номера троек, так чтобы они не повторялись 
+	do // Г°Г Г­Г¤Г®Г¬ГЁГ¬ Г­Г®Г¬ГҐГ°Г  ГІГ°Г®ГҐГЄ, ГІГ ГЄ Г·ГІГ®ГЎГ» Г®Г­ГЁ Г­ГҐ ГЇГ®ГўГІГ®Г°ГїГ«ГЁГ±Гј 
 	{
 		i = rand() % 3;
 		swap_str = rand() % 3;
 	} while (i >= swap_str);
-	if (swap_str == 1) swap_str = 3; //если 0 и 1 тройка
-	if (swap_str == 2) swap_str = 6; //если 0 и 2 тройка
-	if (i == 1) i = 3;// если 1 и 2 тройка
-	for (j = 0; j < n; j++) //меняем
+	if (swap_str == 1) swap_str = 3; //ГҐГ±Г«ГЁ 0 ГЁ 1 ГІГ°Г®Г©ГЄГ 
+	if (swap_str == 2) swap_str = 6; //ГҐГ±Г«ГЁ 0 ГЁ 2 ГІГ°Г®Г©ГЄГ 
+	if (i == 1) i = 3;// ГҐГ±Г«ГЁ 1 ГЁ 2 ГІГ°Г®Г©ГЄГ 
+	for (j = 0; j < n; j++) //Г¬ГҐГ­ГїГҐГ¬
 	{
 		swap(table[i][j], table[swap_str][j]);
 		swap(table[i + 1][j], table[swap_str + 1][j]);
 		swap(table[i + 2][j], table[swap_str + 2][j]);
 	}
 }
-void permutation_column() //поменять местами 2 солбца в предалах одной тройки
+void permutation_column() //ГЇГ®Г¬ГҐГ­ГїГІГј Г¬ГҐГ±ГІГ Г¬ГЁ 2 Г±Г®Г«ГЎГ¶Г  Гў ГЇГ°ГҐГ¤Г Г«Г Гµ Г®Г¤Г­Г®Г© ГІГ°Г®Г©ГЄГЁ
 {
-	int swap_column, j, i = rand() % 9; // рандомим столбец
-	if ((i == 0) || (i == 3) || (i == 6)) swap_column = rand() % 2 + 1;	//рандомим столбец внутри этой тройки
+	int swap_column, j, i = rand() % 9; // Г°Г Г­Г¤Г®Г¬ГЁГ¬ Г±ГІГ®Г«ГЎГҐГ¶
+	if ((i == 0) || (i == 3) || (i == 6)) swap_column = rand() % 2 + 1;	//Г°Г Г­Г¤Г®Г¬ГЁГ¬ Г±ГІГ®Г«ГЎГҐГ¶ ГўГ­ГіГІГ°ГЁ ГЅГІГ®Г© ГІГ°Г®Г©ГЄГЁ
 	if ((i == 1) || (i == 4) || (i == 7)) swap_column = 1;
 	if ((i == 2) || (i == 5) || (i == 8)) swap_column = -(rand() % 2 + 1);
 	for (j = 0; j < n; j++)
@@ -75,25 +75,25 @@ void permutation_column() //поменять местами 2 солбца в предалах одной тройки
 		swap(table[j][i], table[j][i + swap_column]);
 	}
 }
-void permutation_3_column() // поменять местами 2 тройки столбцов
+void permutation_3_column() // ГЇГ®Г¬ГҐГ­ГїГІГј Г¬ГҐГ±ГІГ Г¬ГЁ 2 ГІГ°Г®Г©ГЄГЁ Г±ГІГ®Г«ГЎГ¶Г®Гў
 {
 	int swap_column, j, i;
-	do // рандомим номера троек, так чтобы они не повторялись 
+	do // Г°Г Г­Г¤Г®Г¬ГЁГ¬ Г­Г®Г¬ГҐГ°Г  ГІГ°Г®ГҐГЄ, ГІГ ГЄ Г·ГІГ®ГЎГ» Г®Г­ГЁ Г­ГҐ ГЇГ®ГўГІГ®Г°ГїГ«ГЁГ±Гј 
 	{
 		i = rand() % 3;
 		swap_column = rand() % 3;
 	} while (i > swap_column);
-	if (swap_column == 1) swap_column = 3;//если 0 и 1 тройка
-	if (swap_column == 2) swap_column = 6;//если 0 и 2 тройка
-	if (i == 1) i = 3; //если 1 и 2 тройка
-	for (j = 0; j < n; j++) //меняем
+	if (swap_column == 1) swap_column = 3;//ГҐГ±Г«ГЁ 0 ГЁ 1 ГІГ°Г®Г©ГЄГ 
+	if (swap_column == 2) swap_column = 6;//ГҐГ±Г«ГЁ 0 ГЁ 2 ГІГ°Г®Г©ГЄГ 
+	if (i == 1) i = 3; //ГҐГ±Г«ГЁ 1 ГЁ 2 ГІГ°Г®Г©ГЄГ 
+	for (j = 0; j < n; j++) //Г¬ГҐГ­ГїГҐГ¬
 	{
 		swap(table[j][i], table[j][swap_column]);
 		swap(table[j][i + 1], table[j][swap_column + 1]);
 		swap(table[j][i + 2], table[j][swap_column + 2]);
 	}
 }
-bool base() // создаем базовую таблицу
+bool base() // Г±Г®Г§Г¤Г ГҐГ¬ ГЎГ Г§Г®ГўГіГѕ ГІГ ГЎГ«ГЁГ¶Гі
 {
 	int i, j;
 	ifstream b_t;
@@ -105,19 +105,19 @@ bool base() // создаем базовую таблицу
 		{
 			for (j = 0; j < n; j++)
 			{
-				b_t >> table[i][j]; //записываем из файла
+				b_t >> table[i][j]; //Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ ГЁГ§ ГґГ Г©Г«Г 
 			}
 		}
 		return true;
 	}
 	else
 	{
-		cout << "Файл не найден. Переустановите программу.\n";
+		cout << "Г”Г Г©Г« Г­ГҐ Г­Г Г©Г¤ГҐГ­. ГЏГҐГ°ГҐГіГ±ГІГ Г­Г®ГўГЁГІГҐ ГЇГ°Г®ГЈГ°Г Г¬Г¬Гі.\n";
 		return false;
 	}
 	b_t.close();
 }
-void delet(char(*sudocu)[n][n]) //удаляем элементы из строки, чтобы получить судоку
+void delet(char(*sudocu)[n][n]) //ГіГ¤Г Г«ГїГҐГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІГ» ГЁГ§ Г±ГІГ°Г®ГЄГЁ, Г·ГІГ®ГЎГ» ГЇГ®Г«ГіГ·ГЁГІГј Г±ГіГ¤Г®ГЄГі
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -147,10 +147,10 @@ void delet(char(*sudocu)[n][n]) //удаляем элементы из строки, чтобы получить суд
 bool generation()
 {
 	if (base() == false) return false;
-	int random = rand() % 17 + 3; //подбирала так, чтобы при выпадении верхней границы таблица генерировалась не более 2-х секунд
+	int random = rand() % 17 + 3; //ГЇГ®Г¤ГЎГЁГ°Г Г«Г  ГІГ ГЄ, Г·ГІГ®ГЎГ» ГЇГ°ГЁ ГўГ»ГЇГ Г¤ГҐГ­ГЁГЁ ГўГҐГ°ГµГ­ГҐГ© ГЈГ°Г Г­ГЁГ¶Г» ГІГ ГЎГ«ГЁГ¶Г  ГЈГҐГ­ГҐГ°ГЁГ°Г®ГўГ Г«Г Г±Гј Г­ГҐ ГЎГ®Г«ГҐГҐ 2-Гµ Г±ГҐГЄГіГ­Г¤
 	for (int i = 0; i < random; i++)
 	{
-		int m = rand() % 9 + 2; //типа рандомный вызов функций для генерации таблицы
+		int m = rand() % 9 + 2; //ГІГЁГЇГ  Г°Г Г­Г¤Г®Г¬Г­Г»Г© ГўГ»Г§Г®Гў ГґГіГ­ГЄГ¶ГЁГ© Г¤Г«Гї ГЈГҐГ­ГҐГ°Г Г¶ГЁГЁ ГІГ ГЎГ«ГЁГ¶Г»
 		if (m % 11 == 0) transpose();
 		if (m % 3 == 0) permutation_str();
 		if (m % 2 == 0) permutation_column();
@@ -186,12 +186,12 @@ bool input_proverka(char(*input_sudocu)[n][n])
 	}
 	if ((kol1 == n * n) && (kol2 == n * n))
 	{
-		cout << "Вы выиграли \n";
+		cout << "Г‚Г» ГўГ»ГЁГЈГ°Г Г«ГЁ \n";
 		return true;
 	}
 	else
 	{
-		cout << "Неверное решение\n";
+		cout << "ГЌГҐГўГҐГ°Г­Г®ГҐ Г°ГҐГёГҐГ­ГЁГҐ\n";
 		return false;
 	}
 }
@@ -235,19 +235,19 @@ bool validaciya(char(*input)[n][n])
 			}
 			catch (int b)
 			{
-				if (b == 0) { cout << "Вы ничего не ввели/ не сохранили файл \n"; return false; }
-				if (b == 1) { cout << "Нельзя вводить 0\n"; return false; }
-				if (b == 2) { cout << "Нельзя вводить буквы (символы) \n"; return false; }
-				if (b == 3) { cout << "Вы ввели меньше 9 цифр\n"; return false; }
-				if (b == 4) { cout << "Вы ввели больше 9 цифр\n"; return false; }
-				if (b == 5) { cout << "Вы ввели больше 9 строк\n"; return false; }
-				if (b == 6) { cout << "Вы ввели меньше 9 строк\n"; return false; }
+				if (b == 0) { cout << "Г‚Г» Г­ГЁГ·ГҐГЈГ® Г­ГҐ ГўГўГҐГ«ГЁ/ Г­ГҐ Г±Г®ГµГ°Г Г­ГЁГ«ГЁ ГґГ Г©Г« \n"; return false; }
+				if (b == 1) { cout << "ГЌГҐГ«ГјГ§Гї ГўГўГ®Г¤ГЁГІГј 0\n"; return false; }
+				if (b == 2) { cout << "ГЌГҐГ«ГјГ§Гї ГўГўГ®Г¤ГЁГІГј ГЎГіГЄГўГ» (Г±ГЁГ¬ГўГ®Г«Г») \n"; return false; }
+				if (b == 3) { cout << "Г‚Г» ГўГўГҐГ«ГЁ Г¬ГҐГ­ГјГёГҐ 9 Г¶ГЁГґГ°\n"; return false; }
+				if (b == 4) { cout << "Г‚Г» ГўГўГҐГ«ГЁ ГЎГ®Г«ГјГёГҐ 9 Г¶ГЁГґГ°\n"; return false; }
+				if (b == 5) { cout << "Г‚Г» ГўГўГҐГ«ГЁ ГЎГ®Г«ГјГёГҐ 9 Г±ГІГ°Г®ГЄ\n"; return false; }
+				if (b == 6) { cout << "Г‚Г» ГўГўГҐГ«ГЁ Г¬ГҐГ­ГјГёГҐ 9 Г±ГІГ°Г®ГЄ\n"; return false; }
 			}
 		}
 	}
 	else
 	{
-		cout << "Ошибка. Файл с решением не найден. Введите еще раз";
+		cout << "ГЋГёГЁГЎГЄГ . Г”Г Г©Г« Г± Г°ГҐГёГҐГ­ГЁГҐГ¬ Г­ГҐ Г­Г Г©Г¤ГҐГ­. Г‚ГўГҐГ¤ГЁГІГҐ ГҐГ№ГҐ Г°Г Г§";
 		return false;
 	}
 	file.close();
@@ -268,8 +268,8 @@ bool validachiya_vvoda(string *str)
 	}
 	catch (int b)
 	{
-		if (b == 0) { cout << "Вы ничего не ввели. \n"; return false; }
-		if (b == 2) { cout << "Вы можете вводить только 'ok'. \n"; return false; }
+		if (b == 0) { cout << "Г‚Г» Г­ГЁГ·ГҐГЈГ® Г­ГҐ ГўГўГҐГ«ГЁ. \n"; return false; }
+		if (b == 2) { cout << "Г‚Г» Г¬Г®Г¦ГҐГІГҐ ГўГўГ®Г¤ГЁГІГј ГІГ®Г«ГјГЄГ® 'ok'. \n"; return false; }
 	}
 }
 
@@ -278,39 +278,39 @@ int main()
 	setlocale(0, "");
 	//srand(time(0));
 	if (generation() == false) { system("Pause"); return 0;}
-	cout << "Сгенерированная таблица(правильный ответ)" << endl;
-	dsdjl(&table); // вывод таблицы
+	cout << "Г‘ГЈГҐГ­ГҐГ°ГЁГ°Г®ГўГ Г­Г­Г Гї ГІГ ГЎГ«ГЁГ¶Г (ГЇГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ)" << endl;
+	dsdjl(&table); // ГўГ»ГўГ®Г¤ ГІГ ГЎГ«ГЁГ¶Г»
 
 	char sudocu[n][n];
 	delet(&sudocu);
-	cout << "Судоку" << endl;
+	cout << "Г‘ГіГ¤Г®ГЄГі" << endl;
 	dsdjl(&sudocu);
 	
-	char input_sudocu[n][n];//ввод  и проверка
+	char input_sudocu[n][n];//ГўГўГ®Г¤  ГЁ ГЇГ°Г®ГўГҐГ°ГЄГ 
 	string str;
 	for (int i = 0; i < 2; i++)
 	{
 		cout << endl;
-		cout << "\n Осталось попыток " << 2 - i << endl;
+		cout << "\n ГЋГ±ГІГ Г«Г®Г±Гј ГЇГ®ГЇГ»ГІГ®ГЄ " << 2 - i << endl;
 		do
 		{
 			cout << endl;
 			ofstream file("Ansver.txt"); file.close();
-			cout << "Напишите свое решение в открывшимся файле и закройте его. Как закончите напишите 'ok' \n";
+			cout << "ГЌГ ГЇГЁГёГЁГІГҐ Г±ГўГ®ГҐ Г°ГҐГёГҐГ­ГЁГҐ Гў Г®ГІГЄГ°Г»ГўГёГЁГ¬Г±Гї ГґГ Г©Г«ГҐ ГЁ Г§Г ГЄГ°Г®Г©ГІГҐ ГҐГЈГ®. ГЉГ ГЄ Г§Г ГЄГ®Г­Г·ГЁГІГҐ Г­Г ГЇГЁГёГЁГІГҐ 'ok' \n";
 			system("Ansver.txt");
 			do
 			{
 				getline(cin, str);
 			} while (validachiya_vvoda(&str) == false);
 		} while (validaciya(&input_sudocu) == false);
-		cout << "\nВаша таблица \n";
+		cout << "\nГ‚Г ГёГ  ГІГ ГЎГ«ГЁГ¶Г  \n";
 		dsdjl(&input_sudocu);
 		if (input_proverka(&input_sudocu) == true) break;
 		if (i == 1)
 		{
-			cout << "Вы проиграли\n";
+			cout << "Г‚Г» ГЇГ°Г®ГЁГЈГ°Г Г«ГЁ\n";
 			cout << endl;
-			cout << "Правильный ответ\n";
+			cout << "ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ\n";
 			dsdjl(&table);
 		}
 	}
