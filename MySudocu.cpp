@@ -1,7 +1,7 @@
 // MySudocu.cpp: îïðåäåëÿåò òî÷êó âõîäà äëÿ êîíñîëüíîãî ïðèëîæåíèÿ.
 //
 
-
+#include "fstream"
 #include "fstream"
 #include"ctime"
 #include "string"
