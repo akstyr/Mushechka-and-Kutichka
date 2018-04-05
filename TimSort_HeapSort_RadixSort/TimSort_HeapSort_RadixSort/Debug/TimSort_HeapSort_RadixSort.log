@@ -1,0 +1,14 @@
+﻿  TimSort_HeapSort_RadixSort.cpp
+c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(31): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(49): error C2259: TimSort: невозможно создать экземпляр абстрактного класса
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(49): note: из-за следующих членов:
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(49): note: unsigned int Sort::MetodSort(void) const: абстрактный
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\sort.h(11): note:  см. объявление "Sort::MetodSort"
+c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(67): error C2259: HeapSort: невозможно создать экземпляр абстрактного класса
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(67): note: из-за следующих членов:
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(67): note: unsigned int Sort::MetodSort(void) const: абстрактный
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\sort.h(11): note:  см. объявление "Sort::MetodSort"
+c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(81): error C2259: RadixSort: невозможно создать экземпляр абстрактного класса
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(81): note: из-за следующих членов:
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\timsort_heapsort_radixsort.cpp(81): note: unsigned int Sort::MetodSort(void) const: абстрактный
+  c:\users\7262_gea\desktop\timsort_heapsort_radixsort\timsort_heapsort_radixsort\sort.h(11): note:  см. объявление "Sort::MetodSort"
