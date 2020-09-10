@@ -1,2 +1,1 @@
-# Mushechka-and-Kutichka
-for learn
+hello
